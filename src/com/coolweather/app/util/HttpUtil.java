@@ -5,6 +5,13 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+/**
+ * @author: root
+ * @ClassName: HttpUtil 
+ * @Description: 网络访问工具
+ * @date: 2016年2月28日 下午1:26:43
+ */
+
 public class HttpUtil
 {
 	/**

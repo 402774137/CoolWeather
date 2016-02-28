@@ -20,16 +20,18 @@ import com.coolweather.app.model.Province;
 /**
  * @author: root
  * @ClassName: Utility 
- * @Description: 解析和处理服务器返回的“代号|城市,代号|城市”格式的省市县数据
- *               解析的规则就是先按逗号分隔，再按单竖线分隔，接着将解析出来的数据设置到实体类中，
- *               最后调用CoolWeatherDB中的三个save()方法将数据存储到相应的表中。
+ * @Description: 解析存储省市县数据和天气数据
  * @date: 2016年2月12日 下午11:13:17
  */
 
 public class Utility
 {
+	// 省市县数据格式： 代号|城市,代号|城市
+	// 解析规则：就是先按逗号分隔，再按单竖线分隔
+	// 接着将解析出来的数据设置到实体类中，最后调用CoolWeatherDB中的三个save()方法将数据存储到相应的表中。
+
 	/**
-	 * 解析和处理服务器返回的省级数据
+	 * 解析和存储服务器返回的省级数据
 	 * @param coolWeatherDB
 	 * @param response
 	 * @return
@@ -57,7 +59,7 @@ public class Utility
 	}
 
 	/**
-	 * 解析和处理服务器返回的市级数据
+	 * 解析和存储服务器返回的市级数据
 	 * @param coolWeatherDB
 	 * @param response
 	 * @param provinceId
@@ -87,7 +89,7 @@ public class Utility
 	}
 
 	/**
-	 * 解析和处理服务器返回的县级数据
+	 * 解析和存储服务器返回的县级数据
 	 * @param coolWeatherDB
 	 * @param response
 	 * @param cityId
@@ -116,12 +118,12 @@ public class Utility
 		return false;
 	}
 
-	// 服务器返回的天气数据格式
+	// 天气数据格式
 	// {"weatherinfo":{"city":"昆山","cityid":"101190404","temp1":"21℃","temp2":"9℃","weather":"多云转小雨","img1":"d1.gif","img2":"n7.gif","ptime":"11:00"}}
 	// 其中cityid是用户无需知晓的，img1和img2不准备使用，因此只需要显示城市名、温度范围、天气信息描述、发布时间这几项
 
 	/**
-	 * 解析服务器返回的JSON格式的天气数据，并将解析出的数据存储到本地
+	 * 解析服务器返回的JSON格式的天气数据并存储到本地
 	 * @param context
 	 * @param response
 	 */
@@ -148,7 +150,7 @@ public class Utility
 	}
 
 	/**
-	 * 将服务器返回的所有天气信息存储到SharedPreferences文件中
+	 * 将所有天气信息存储到SharedPreferences文件中
 	 * @param context
 	 * @param cityName
 	 * @param weatherCode
