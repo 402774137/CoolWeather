@@ -37,6 +37,8 @@ public class HttpUtil
 
 					// InputStream in = connection.getInputStream();
 					BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+
+					// 非并发的可改String
 					StringBuilder response = new StringBuilder();
 					String line;
 					while ((line = reader.readLine()) != null)
