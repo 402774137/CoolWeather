@@ -5,7 +5,10 @@ import java.util.List;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.Window;
@@ -65,8 +68,25 @@ public class ChooseAreaActivity extends Activity
 	{
 		super.onCreate(savedInstanceState);
 
+		choose();
 		initLayout();
 		queryProvinces();
+	}
+
+	/**
+	 * 先从SharedPreferences文件中读取city_selected标志位，
+	 * 如果为true就说明当前已经选择过城市了，直接跳转到WeatherActivity
+	 */
+	private void choose()
+	{
+		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+		if (prefs.getBoolean("city_selected", false))
+		{
+			Intent intent = new Intent(this, WeatherActivity.class);
+			startActivity(intent);
+			finish();
+			return;
+		}
 	}
 
 	/**
@@ -100,6 +120,15 @@ public class ChooseAreaActivity extends Activity
 				{
 					selectedCity = cityList.get(index);
 					queryCounties();
+				}
+
+				else if (currentLevel == LEVEL_COUNTY)
+				{
+					String countyCode = countyList.get(index).getCountyCode();
+					Intent intent = new Intent(ChooseAreaActivity.this, WeatherActivity.class);
+					intent.putExtra("county_code", countyCode);
+					startActivity(intent);
+					finish();
 				}
 			}
 		});
