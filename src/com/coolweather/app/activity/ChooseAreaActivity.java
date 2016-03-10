@@ -124,9 +124,16 @@ public class ChooseAreaActivity extends Activity
 
 				else if (currentLevel == LEVEL_COUNTY)
 				{
-					String countyCode = countyList.get(index).getCountyCode();
-					Intent intent = new Intent(ChooseAreaActivity.this, WeatherActivity.class);
-					intent.putExtra("county_code", countyCode);
+//					String countyCode = countyList.get(index).getCountyCode();
+//					Intent intent = new Intent(ChooseAreaActivity.this, WeatherActivity.class);
+//					intent.putExtra("county_code", countyCode);
+//					startActivity(intent);
+//					finish();
+					
+//					Ω¯»Î≤‚ ‘“≥√Ê
+					String CountyName = countyList.get(index).getCountyName();
+					Intent intent = new Intent(ChooseAreaActivity.this, TestActivity.class);
+					intent.putExtra("county_name", CountyName);
 					startActivity(intent);
 					finish();
 				}

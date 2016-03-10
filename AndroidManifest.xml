@@ -26,6 +26,8 @@
         </activity>
         <activity android:name="com.coolweather.app.activity.WeatherActivity" >
         </activity>
+        <activity android:name="com.coolweather.app.activity.TestActivity" >
+        </activity>
     </application>
 
 </manifest>
